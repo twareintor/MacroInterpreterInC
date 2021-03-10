@@ -7,30 +7,30 @@ Let's be it a SQL string for Access. Beside that Access doesn't let you even cha
 Let's get to the motivation for this project. Let's have a SQL string to update a table. This will look similar to:
 <pre>
 UPDATE
-    [<Database1>].[<Table1>] AS Dst
+    [Database1].[Table1] AS Dst
 INNER JOIN
-    [<Database2>].[<Table2>] AS Src
+    [Database2].[Table2] AS Src
 ON
-    Dst.[<Field1>] = Src.[<Field2>]
+    Dst.[Field1] = Src.[Field2]
 SET
-    Dst.[<TargetField>] = MID(Src.[<SourceField>], INSTR(Src.[<SourceField>], Dst.[<TargetField>]))
+    Dst.[TargetField] = MID(Src.[SourceField], INSTR(Src.[SourceField], Dst.[TargetField]))
 WHERE
-    INSTR(Src.[<SourceField>], Dst.[<TargetField>])
+    INSTR(Src.[SourceField], Dst.[TargetField])
 ;
     </pre>
 Before let it run, you may want to check to have a look at the possible results. Let's suppose your database development environment doesn't offer you this possibility for free.
 So, you need a similar query to check what-it-will-be after update which will look like this:
 <pre>
 SELECT
-    Dst.[<TargetField>], "==>" AS Op, MID(Src.[<SourceField>], INSTR(Src.[<SourceField>], Dst.[<TargetField>]))
+    Dst.[TargetField], "==>" AS Op, MID(Src.[SourceField], INSTR(Src.[SourceField], Dst.[TargetField]))
 FROM
-    [<Database1>].[<Table1>] AS Dst
+    [Database1].[Table1] AS Dst
 INNER JOIN
-    [<Database2>].[<Table2>] AS Src
+    [Database2].[Table2] AS Src
 ON
-    Dst.[<Field1>] = Src.[<Field2>]
+    Dst.[Field1] = Src.[Field2]
 WHERE
-    INSTR(Src.[<SourceField>], Dst.[<TargetField>])
+    INSTR(Src.[SourceField], Dst.[TargetField])
 ;
     </pre>
 The two queries looks quite similar. But if you change sometihng in one, you have to change the same in another. Othwerwise, you can see, in check-phase, results which wil not be exactly what you'll get in the destination table. And this is not good.
@@ -42,22 +42,22 @@ What if I have the same code for both activities? For check and update the same 
 
 #IFNDEF @THIS_IS_THE_UPDATE
 SELECT
-    Dst.[<TargetField>], "==>" AS Op, MID(Src.[<SourceField>], INSTR(Src.[<SourceField>], Dst.[<TargetField>]))
+    Dst.[TargetField], "==>" AS Op, MID(Src.[<SourceField>], INSTR(Src.[<SourceField>], Dst.[<TargetField>]))
 FROM
 #ELSE
 UPDATE
-    [<Database1>].[<Table1>] AS Dst
+    [Database1].[Table1] AS Dst
 INNER JOIN
 #ENDIF
-    [<Database2>].[<Table2>] AS Src
+    [Database2].[Table2] AS Src
 ON
-    Dst.[<Field1>] = Src.[<Field2>]
+    Dst.[Field1] = Src.[Field2]
 #IFDEF @THIS_IS_THE_UPDATE
 SET
-    Dst.[<TargetField>] = MID(Src.[<SourceField>], INSTR(Src.[<SourceField>], Dst.[<TargetField>]))
+    Dst.[TargetField] = MID(Src.[SourceField], INSTR(Src.[SourceField], Dst.[TargetField]))
 #ENDIF
 WHERE
-    INSTR(Src.[<SourceField>], Dst.[<TargetField>])
+    INSTR(Src.[SourceField], Dst.[TargetField])
 ;
     </pre>
 In this example, simply removing the @THIS_IS_THE_UPDATE definition will change the query, resulting in a select one or in an update one.
