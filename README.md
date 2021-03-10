@@ -42,7 +42,7 @@ What if I have the same code for both activities? For check and update the same 
 
 #IFNDEF @THIS_IS_THE_UPDATE
 SELECT
-    Dst.[TargetField], "==>" AS Op, MID(Src.[<SourceField>], INSTR(Src.[<SourceField>], Dst.[<TargetField>]))
+    Dst.[TargetField], "==&gt;" AS Op, MID(Src.[SourceField], INSTR(Src.[SourceField], Dst.[TargetField]))
 FROM
 #ELSE
 UPDATE
