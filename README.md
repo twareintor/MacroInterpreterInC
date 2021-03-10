@@ -46,9 +46,9 @@ SELECT
 FROM
 #ELSE
 UPDATE
+#ENDIF
     [Database1].[Table1] AS Dst
 INNER JOIN
-#ENDIF
     [Database2].[Table2] AS Src
 ON
     Dst.[Field1] = Src.[Field2]
