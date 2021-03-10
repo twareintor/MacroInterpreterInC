@@ -1,0 +1,24 @@
+
+#ifndef VERSION_H_19823745981235491239841723
+#define VERSION_H_19823745981235491239841723
+
+#include <stdio.h>
+
+// 
+#define SHOW_VERSION(X) printf("VERSION " #X "/ " __DATE__ " " __TIME__ "\n");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#endif//VERSION_H_19823745981235491239841723
