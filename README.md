@@ -1,6 +1,6 @@
 # MacroInterpreterInC
 Introducing macros in code who doesn't support this feature.
-
+<pre>
 Motivation:
 Let's take the example of a pure SQL query string, formatted as to be clearly understood and ready for further development.
 Let's be it a SQL string for Access. Beside that Access doesn't let you even change the font face nor size, the SQL string is not saved with the original format. As were not enough, this doesn't support even comments. But this is another story that is subject of anther project of mine which, if not already, will be available on GitHug as soon as possible.
@@ -70,4 +70,4 @@ To support embraced #IF../#ELSE/#ENDIF conditions, at as many levels as possible
 An unrecognized macro command is ignored and becomes just a macro comment
 Intended to support also something like #INCLUDE directive 
 And more.
-
+</pre>
