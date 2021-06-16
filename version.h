@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 // 
+// Try using "TiniC" in order to generate header files (right berfore or) at compile time
 #define SHOW_VERSION(X) printf("VERSION " #X "/ " __DATE__ " " __TIME__ "\n");
 
 
