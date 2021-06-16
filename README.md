@@ -69,8 +69,8 @@ This is just a simple example and a possible simple application of it. Is intend
 #DEFINE @TABLE01 Sheet1$
     </pre>
 To support embraced #IF../#ELSE/#ENDIF conditions, at as many levels as possible
-An unrecognized macro command is ignored and becomes just a macro comment
-Intended to support also something like #INCLUDE directive 
+An unrecognized macro command is ignored and becomes just a macro comment.
+Future development: Intended to support also something like #INCLUDE directive 
 And more.
 
 
